@@ -52,6 +52,7 @@ const allPlants = async () => {
     
     const div = document.createElement("div");
     div.innerHTML = `
+          <div class="transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div id="cards" class="bg-white shadow-sm p-4 rounded-lg flex flex-col h-full w-full">
     <div class="w-full h-[180px]">
         <img class="rounded-lg w-full h-full object-cover" src="${plant.image}" loading="lazy" alt="">
@@ -72,6 +73,7 @@ const allPlants = async () => {
         </div>
     </div>
 </div>
+          </div>
 `;
     treeCardContainer.appendChild(div);
 
