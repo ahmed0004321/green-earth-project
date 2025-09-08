@@ -23,15 +23,13 @@ const loadTreeCategories = async () => {
         //console.log(allList);
 
         allList.forEach( li => {
-            li.classList.remove('hover:bg-[#3b813e]', 'hover:text-white');
+            li.classList.remove('bg-[#3b813e]', 'text-white');
         })
 
-        if(e.target.localName === "li"){
-            e.target.classList.add('hover:bg-[#3b813e]', 'hover:text-white');
+        if(e.target.tagName === "LI"){
+            e.target.classList.add('bg-[#3b813e]', 'text-white');
         }
     })
-
-
 }
 loadTreeCategories();
 
