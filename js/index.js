@@ -158,7 +158,7 @@ const addToCart = (name, price) => {
     <div class="rounded-2xl p-4 bg-[#cff0dc] mb-2 flex justify-between items-center">
     <div class="space-y-1">
     <p class="text-[12px] font-semibold">${name}</p>
-    <p class="text-[#889396]">৳${price} x <span id="count">1</span></p>
+    <p class="text-[#889396] price">${price}</p>
     </div>
     <i class="fa-solid fa-xmark"></i>
     </div>
@@ -175,13 +175,19 @@ const addToCart = (name, price) => {
 }
 
 
-//delete cart item
+//delete cart item and price deduct
 cartContainer.addEventListener('click', (e) =>{
-
+    const total = parseInt(document.getElementById('total').innerText);
     if(e.target.tagName === "I"){
         e.target.parentElement.remove();
+        const parent = e.target.parentElement;
+
+        const getPrice = parseInt(parent.querySelector('.price').innerText);
+        const priceMinus = total - getPrice;
+        document.getElementById('total').innerText = priceMinus;
     }
 });
+
 
 
 //spinner
