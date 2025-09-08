@@ -3,6 +3,9 @@ const categoryContainer = document.getElementById("category-container");
 const treeCardContainer = document.getElementById("tree-card-container");
 const cartContainer = document.getElementById('cart-container');
 const detailsContainer = document.getElementById('details-container');
+const total = parseInt(document.getElementById('total').innerText);
+let totalPrice = 0;
+
 //tree category load
 //load category is done
 const loadTreeCategories = async () => {
@@ -52,7 +55,6 @@ const allPlants = async () => {
     
     const div = document.createElement("div");
     div.innerHTML = `
-          <div class="transform transition duration-300 hover:scale-105 hover:shadow-xl">
           <div id="cards" class="bg-white shadow-sm p-4 rounded-lg flex flex-col h-full w-full">
     <div class="w-full h-[180px]">
         <img class="rounded-lg w-full h-full object-cover" src="${plant.image}" loading="lazy" alt="">
@@ -73,11 +75,10 @@ const allPlants = async () => {
         </div>
     </div>
 </div>
-          </div>
 `;
     treeCardContainer.appendChild(div);
-
   });
+  spinner(false);
 };
 allPlants();
 
@@ -102,7 +103,6 @@ const showModal = (data) => {
     ${data.description}
   </p>
 </div>
-
     `; 
     document.getElementById('my_modal').showModal();
 }
@@ -111,6 +111,7 @@ const showModal = (data) => {
 
 //get plants by categories
 const plantByCategories = async (id) => {
+    spinner(true);
   const response = await fetch(
     `https://openapi.programming-hero.com/api/category/${id}`
   );
@@ -145,6 +146,7 @@ const plantByCategories = async (id) => {
         `;
     treeCardContainer.appendChild(div);
   });
+  spinner(false);
 };
 
 
@@ -170,9 +172,7 @@ const addToCart = (name, price) => {
     const totalPrice = total + treePrice;
     document.getElementById('total').innerText = totalPrice;
 
-    
 }
-
 
 
 //delete cart item
@@ -181,5 +181,18 @@ cartContainer.addEventListener('click', (e) =>{
     if(e.target.tagName === "I"){
         e.target.parentElement.remove();
     }
-})
+});
 
+
+//spinner
+const spinnerEl = document.getElementById('spinner');
+
+const spinner = (status) => {
+  if (status) {
+    spinnerEl.classList.remove('hidden');
+    treeCardContainer.style.visibility = "hidden";
+  } else {
+    spinnerEl.classList.add('hidden');
+    treeCardContainer.style.visibility = "visible";
+  }
+};
