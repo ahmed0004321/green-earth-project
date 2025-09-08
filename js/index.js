@@ -16,7 +16,7 @@ const loadTreeCategories = async () => {
   category.forEach((cat) => {
     const li = document.createElement("li");
     li.innerHTML = `
-        <li onclick="plantByCategories('${cat.id}')" class="hover:bg-[#3b813e] font-semibold p-2 hover:text-white rounded-xl border-b-1 border-gray-300">${cat.category_name}</li>
+        <li onclick="plantByCategories('${cat.id}')" class="hover:bg-[#3b813e] p-2 hover:text-white rounded-xl">${cat.category_name}</li>
         `;
     categoryContainer.appendChild(li);
   });
@@ -89,13 +89,18 @@ const loadTreeDetail = async (id) => {
 
 const showModal = (data) => {
     detailsContainer.innerHTML = `
-    <div class="flex flex-col space-y-3">
-        <h3 class="font-bold">${data.name}</h3>
-        <img class="w-full h-full object-cover rounded-lg" src="${data.image}" alt="">
-        <p class="">Category:<span> ${data.category}</span></p>
-        <p class="">Price:৳ <span>${data.price}</span></p>
-        <p class="">Description:<span> ${data.description}</span></p>
-      </div>
+     <div class="flex flex-col justify-center h-full w-full space-y-3">
+  <h3 class="font-bold text-lg">${data.name}</h3>
+  
+  <img class="w-full h-40 object-cover rounded-lg mx-auto" src="${data.image}" alt="">
+  
+  <p class="text-sm">Category: <span class="font-medium">${data.category}</span></p>
+  <p class="text-sm">Price: ৳<span class="font-semibold">${data.price}</span></p>
+  <p class="text-sm leading-relaxed text-gray-600">
+    ${data.description}
+  </p>
+</div>
+
     `; 
     document.getElementById('my_modal').showModal();
 }
