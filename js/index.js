@@ -119,12 +119,22 @@ const plantByCategories = async (id) => {
 
 //add to cart
 const addToCart = (name) => {
+    
     const div = document.createElement('div');
     div.innerHTML = `
-    <div class="rounded-2xl p-4 bg-[#cff0dc] mb-2">
+    <div class="rounded-2xl p-4 bg-[#cff0dc] mb-2 flex justify-between items-center">
     <p class="text-[12px] font-semibold">${name}</p>
+    <i class="fa-solid fa-xmark"></i>
     </div>
     `
     cartContainer.appendChild(div);
 }
+
+//delete cart item
+cartContainer.addEventListener('click', (e) =>{
+
+    if(e.target.tagName === "I"){
+        e.target.parentElement.remove();
+    }
+})
 
