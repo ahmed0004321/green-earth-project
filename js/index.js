@@ -160,7 +160,7 @@ const plantByCategories = async (id) => {
         `;
         fragment.appendChild(div);
     });
-    treeCardContainer.appendChild(div);
+    treeCardContainer.appendChild(fragment);
   spinner(false);
 };
 
