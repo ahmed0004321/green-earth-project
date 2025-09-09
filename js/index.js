@@ -159,8 +159,8 @@ const plantByCategories = async (id) => {
 </div>
         `;
         fragment.appendChild(div);
+        treeCardContainer.appendChild(div);
     });
-    treeCardContainer.appendChild(div);
   spinner(false);
 };
 
