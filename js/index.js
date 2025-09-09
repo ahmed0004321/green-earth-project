@@ -176,7 +176,8 @@ const addToCart = (name, price) => {
     <i class="fa-solid fa-xmark"></i>
     </div>
     `;
-  cartContainer.appendChild(div);
+    cartContainer.appendChild(div);
+    alert(`${name} has been added to the cart`);
 
   //total
   const total = parseInt(document.getElementById("total").innerText);
