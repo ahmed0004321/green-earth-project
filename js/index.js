@@ -5,7 +5,7 @@ const treeCardContainer = document.getElementById("tree-card-container");
 const cartContainer = document.getElementById("cart-container");
 const detailsContainer = document.getElementById("details-container");
 const total = parseInt(document.getElementById("total").innerText);
-let totalPrice = 0;
+//let totalPrice = 0;
 
 //tree category load
 //load category is done
@@ -171,20 +171,21 @@ const addToCart = (name, price) => {
     <div class="rounded-2xl p-4 bg-[#cff0dc] mb-2 flex justify-between items-center">
     <div class="space-y-1">
     <p class="text-[12px] font-semibold">${name}</p>
-    <p class="text-[#889396] price">${price}</p>
+    <p class="text-[#889396]"><span class="price">${price}</span> x <span id="counting">1</span></p>
     </div>
     <i class="fa-solid fa-xmark"></i>
     </div>
     `;
     cartContainer.appendChild(div);
-    alert(`${name} has been added to the cart`);
 
+    alert(`${name} has been added to the cart`);
   //total
   const total = parseInt(document.getElementById("total").innerText);
   const treePrice = parseInt(`${price}`);
 
   const totalPrice = total + treePrice;
   document.getElementById("total").innerText = totalPrice;
+
 };
 
 //delete cart item and price deduct
@@ -212,3 +213,4 @@ const spinner = (status) => {
     treeCardContainer.style.visibility = "visible";
   }
 };
+
